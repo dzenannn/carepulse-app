@@ -25,6 +25,7 @@ const formSchema = z.object({
   }),
 });
 
+// KOMPONENTA ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 const PatientForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,6 +45,7 @@ const PatientForm = () => {
           <h1 className="header">Hi there! 🙃</h1>
           <p className="text-dark-700">Schedule your first appointment.</p>
         </section>
+
         <CustomFormField
           fieldType={FieldTypes.INPUT}
           control={form.control}
@@ -53,6 +55,25 @@ const PatientForm = () => {
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
+
+        <CustomFormField
+          fieldType={FieldTypes.INPUT}
+          control={form.control}
+          name="email"
+          label="Email"
+          placeholder="john.doe@example.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="email"
+        />
+
+        <CustomFormField
+          fieldType={FieldTypes.PHONE_INPUT}
+          control={form.control}
+          name="phone"
+          label="Phone number"
+          placeholder="(555) 123-4567"
+        />
+
         <Button type="submit">Submit</Button>
       </form>
     </Form>
